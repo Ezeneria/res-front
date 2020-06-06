@@ -1,0 +1,27 @@
+<mat-form-field class="example-form-field">
+
+  <mat-label *ngIf="options.placeholder">{{options.placeholder}}</mat-label>
+  <input matInput
+         type="text"
+         (blur)="onTouch()"
+         (input)="onChange($event.target.value)"
+         [value]="value">
+  <button mat-button
+          *ngIf="value"
+          [attr.maxLength] = "options.maxLength"
+          [attr.minLength] = "options.minLength"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+<!--  <mat-error>-->
+<!--    Login is <strong>required</strong>-->
+<!--  </mat-error>-->
+<!--  <mat-error *ngIf="login.hasError('required')">-->
+<!--    Login is <strong>required</strong>-->
+<!--  </mat-error>-->
+</mat-form-field>
+
