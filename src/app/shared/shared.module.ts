@@ -4,12 +4,14 @@ import { ButtonComponent } from './components/UI/button/button.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialComponentsModule} from './material-modules.module';
 import {InputComponent} from './components/UI/input/input.component';
+import {QuestionFormComponent} from './components/forms/question-form/question-form.component';
 
 
 @NgModule({
   declarations: [
     ButtonComponent,
     InputComponent,
+    QuestionFormComponent,
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import {InputComponent} from './components/UI/input/input.component';
   ],
   exports: [
     MaterialComponentsModule,
-    InputComponent
+    InputComponent,
+    QuestionFormComponent,
   ]
 })
 export class SharedModule { }

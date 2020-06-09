@@ -1,0 +1,11 @@
+<button mat-button color="accent" class="add-btn" (click)="addQuestion()">
+  <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+  <span>Add question</span>
+</button>
+<ng-container *ngIf="questions.length !== 0">
+  <app-question-form
+    *ngFor="let question of questions; trackBy: trackByFn"
+    [formData]="{questions: question,variants: variants}" >
+  </app-question-form>
+</ng-container>
+

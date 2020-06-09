@@ -1,0 +1,55 @@
+<form class="form" [formGroup]="form">
+  <div class="questions-blocks">
+    <div class="block-item">
+      <div class="description">
+        <div class="description-header">Description</div>
+        <div class="description-body">
+          <mat-form-field class="example-full-width">
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="question-variants">
+        <div class="question-variants-header">
+          Answer options
+        </div>
+        <div class="question-variants-body">
+          <button mat-button color="accent" class="add-btn" (click)="addVariant()">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+            <span>Add variant</span>
+          </button>
+          <div *ngFor="let item of questions; let i = index">
+            <div class="form-group">
+              <div class="form-control">
+                <mat-form-field class="example-full-width">
+                  <input matInput [formControl]="questions[i].controls.title">
+                </mat-form-field>
+              </div>
+              <div class="form-control">
+                <mat-form-field>
+                  <mat-label>Favorite food</mat-label>
+                  <mat-select>
+                    <mat-option *ngFor="let v of variants">
+                      {{v}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="upload">
+        <input type="file" class="upload_btn"/>
+        <div class="overlay-layer">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">cloud</mat-icon>
+          <div>Upload image</div>
+        </div>
+      </div>
+      <div class="delete-btn">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+      </div>
+    </div>
+  </div>
+
+</form>

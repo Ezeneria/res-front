@@ -5,19 +5,7 @@
  <div class="right">
    <form [formGroup]="formLogin" class="login-form" (ngSubmit)="submit($event)">
      <h1>Login</h1>
-<!--     <div class="form-control">-->
-<!--       <app-input formControlName="login" [options]="{placeholder: 'Login'}"></app-input>-->
-<!--       <mat-error *ngIf="login.hasError('required')">-->
-<!--         Login is <strong>required</strong>-->
-<!--       </mat-error>-->
-<!--     </div>-->
-<!--     <div class="form-control">-->
-<!--       <app-input formControlName="login" [options]="{placeholder: 'Password'}"></app-input>-->
-<!--       <mat-error *ngIf="password.hasError('required')">-->
-<!--         Password is <strong>required</strong>-->
-<!--       </mat-error>-->
-<!--     </div>-->
-     <mat-form-field class="example-form-field">
+     <mat-form-field class="form-control">
        <mat-label>Login</mat-label>
        <input matInput type="text" formControlName="login">
        <button mat-button
@@ -32,23 +20,23 @@
        <mat-error *ngIf="login.hasError('required')">
          Login is <strong>required</strong>
        </mat-error>
-     </mat-form-field>
-     <mat-form-field class="example-form-field">
-       <mat-label>Password</mat-label>
-       <input matInput type="text" formControlName="password">
-       <button mat-button
-               *ngIf="password.value"
-               matSuffix
-               mat-icon-button
-               aria-label="Clear"
-               (click)="password.patchValue('')"
-       >
-         <mat-icon>close</mat-icon>
-       </button>
-       <mat-error *ngIf="password.hasError('required')">
-         Password is <strong>required</strong>
-       </mat-error>
-     </mat-form-field>
+      </mat-form-field>
+      <mat-form-field class="form-control">
+        <mat-label>Password</mat-label>
+        <input matInput type="text" formControlName="password">
+        <button mat-button
+                *ngIf="password.value"
+                matSuffix
+                mat-icon-button
+                aria-label="Clear"
+                (click)="password.patchValue('')"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-error *ngIf="password.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
      <a href="#" class="forgot-password">Forgot password?</a>
      <button type="submit" class="submit" mat-button color="primary">Login</button>
    </form>

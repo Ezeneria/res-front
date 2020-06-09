@@ -12,6 +12,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
+import {AuthService} from './auth.service';
+import {HttpClientModule} from '@angular/common/http';
 const MaterialModules = [
   MatButtonModule,
   MatFormFieldModule,
@@ -26,8 +28,10 @@ const MaterialModules = [
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     SharedModule,
     AuthRoutingModule,
-  ]
+  ],
+  providers: [AuthService]
 })
 export class AuthModule { }

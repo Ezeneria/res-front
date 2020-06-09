@@ -1,0 +1,16 @@
+.dashboard {
+  display: flex;
+  .tabs {
+    max-width: 160px;
+    width: 100%;
+    ::ng-deep {
+      .mat-tab-links {
+        flex-direction: column;
+      }
+    }
+  }
+  .router-outlet {
+    flex: 0 0 calc(100% - 160px);
+    padding: 6px 20px;
+  }
+}
