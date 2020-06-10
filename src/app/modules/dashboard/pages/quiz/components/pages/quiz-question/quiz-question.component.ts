@@ -41,6 +41,8 @@ export class QuizQuestionComponent implements OnInit {
         image: ''
       }
     );
-    console.log(this.questions);
+  }
+  delete(e) {
+    this.questions.splice(e, 1);
   }
 }

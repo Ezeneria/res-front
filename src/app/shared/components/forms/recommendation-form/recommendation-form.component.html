@@ -1,0 +1,52 @@
+<form class="form" [formGroup]="form">
+<div class="recommendations">
+  <div class="recommendations-header">
+    <div class="recommendations-title">
+      <mat-form-field class="form-control">
+        <input matInput formControlName="title">
+      </mat-form-field>
+      <div class="delete-btn" (click)="delete()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+      </div>
+    </div>
+  </div>
+  <div class="recommendations-body">
+    <div class="recommendations-description">
+      <div class="recommendations-description-header">Recommendation text</div>
+      <div class="recommendations-description-body">
+        <mat-form-field class="example-full-width">
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="selects" *ngFor="let item of questions; let i = index">
+    <div class="form-group">
+      <div class="form-control">
+        <mat-form-field>
+          <mat-label>Variant question</mat-label>
+          <mat-select [formControl]="questions[i].controls.question">
+            <mat-option *ngFor="let v of questionsVariant">
+              {{v}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-control">
+        <mat-form-field>
+          <mat-label>Variant</mat-label>
+          <mat-select [formControl]="questions[i].controls.variant">
+            <mat-option *ngFor="let v of variants">
+              {{v}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <button mat-button color="accent" class="add-btn" (click)="addQuestion()">
+    <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+    <span>Add question</span>
+  </button>
+</div>
+</form>

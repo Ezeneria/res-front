@@ -22,3 +22,10 @@ export interface Question {
   variant: number;
   image: string;
 }
+
+export interface Recommendations {
+  title: string;
+  description: string;
+  question: number;
+  variant: number;
+}

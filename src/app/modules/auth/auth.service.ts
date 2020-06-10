@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {map} from 'rxjs/operators';
+import {User} from '../../core/models/models';
 
 @Injectable({
   providedIn: 'root'

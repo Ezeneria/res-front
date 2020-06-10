@@ -4,8 +4,9 @@
 </button>
 <ng-container *ngIf="questions.length !== 0">
   <app-question-form
-    *ngFor="let question of questions; trackBy: trackByFn"
-    [formData]="{questions: question,variants: variants}" >
+    (deleted)="delete($event)"
+    *ngFor="let question of questions; let i = index; trackBy: trackByFn"
+    [formData]="{questions: question,variants: variants,  index: i}" >
   </app-question-form>
 </ng-container>
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from '../../../../core/models/models';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 
@@ -8,7 +8,8 @@ import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./question-form.component.scss']
 })
 export class QuestionFormComponent implements OnInit {
-  @Input() public formData: { questions: Question, variants: {[key: number]: string}[] } = null;
+  @Input() public formData: { questions: Question, variants: {[key: number]: string}[], i: number} = null;
+  @Output() public deleted: EventEmitter<number> = new EventEmitter<number>();
   public form: FormGroup;
   public question: Question;
   public variants: [] = [];
@@ -36,6 +37,11 @@ export class QuestionFormComponent implements OnInit {
       selected: [null]
     });
   }
+
+  delete() {
+    this.deleted.emit(this.formData.i);
+  }
+
   get questions() {
       // @ts-ignore
     return this.form.get('questions').controls;
