@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, combineLatest, forkJoin, Observable, Subject} from 'rxjs';
-import {Mentor, User, UserList} from '../../../../../../core/models/models';
-import {map} from 'rxjs/operators';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {Mentor, UserList} from '../../../../../../core/models/models';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
   public fakeData: UserList[] = [

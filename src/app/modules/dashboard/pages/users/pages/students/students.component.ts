@@ -27,7 +27,7 @@ export interface DialogData {
 })
 
 export class StudentsComponent implements OnInit {
-  public displayedColumns: string[] = ['position', 'email', 'fullName', 'status', 'mentor'];
+  public displayedColumns: string[] = ['position', 'email', 'fullName', 'status', 'mentor', 'delete'];
   public userList: UserList[] = [];
   public mentorList: Mentor[] = [];
   public tableList;
@@ -41,20 +41,29 @@ export class StudentsComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) private sort: MatSort;
   public animal: string;
   public name: string;
-  public ngOnInit() {
 
+  constructor(public dialog: MatDialog, private userService: UserService) {}
+
+  public ngOnInit() {
     this.userService.getUsersAndMentors().subscribe(([users, mentors]: [UserList[], Mentor[]]) => {
       this.userList = users.map((u, i) => {
-        return {...u, ...{ position: i }, ...{ fullName: `${u.firstName} ${u.lastName}`}};
+        return {
+          ...u,
+          ...{ position: i },
+          ...{ fullName: `${u.firstName} ${u.lastName}`}
+        };
       });
       this.mentorList = mentors;
       this.dataSource = new MatTableDataSource(this.userList);
       console.log(this.userList);
     });
   }
-
-  constructor(public dialog: MatDialog, private userService: UserService) {}
-
+  public delete(i) {
+    console.log(i);
+    this.userList.splice(i, 1);
+    this.dataSource = new MatTableDataSource(this.userList);
+    console.log(this.userList);
+  }
   inviteUsers(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
       width: '90%',
@@ -96,6 +105,9 @@ export class DialogOverviewExampleDialogComponent {
     // @ts-ignore
       this.formFieldControl.push(this.createUserFormInvite());
   }
+  public delete(index) {
+
+  }
 
   private createUserFormInvite(): FormGroup {
     return this.fb.group({
@@ -106,8 +118,7 @@ export class DialogOverviewExampleDialogComponent {
     });
   }
   public submit(e) {
-    // this.dialogRef.close(this.formFieldControl.value);
-    console.log(this.formFieldControl);
+    this.dialogRef.close(this.formFieldControl.value);
   }
   get formFieldControl() {
     // @ts-ignore

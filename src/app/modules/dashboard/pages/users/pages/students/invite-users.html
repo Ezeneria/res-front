@@ -57,6 +57,11 @@
             Mentor is required
           </mat-error>
         </mat-form-field>
+        <div class="form-control">
+          <div class="delete-btn" (click)="delete(i)">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+          </div>
+        </div>
       </div>
       <button mat-button color="accent" class="add-btn" (click)="addInviteUser()">
         <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
