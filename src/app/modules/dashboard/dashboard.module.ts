@@ -13,13 +13,31 @@ import { QuizRecomendationComponent } from './pages/quiz/components/pages/quiz-r
 import { QuizQuestionComponent } from './pages/quiz/components/pages/quiz-question/quiz-question.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
-import { StudentsComponent } from './pages/users/pages/students/students.component';
+import {DialogOverviewExampleDialogComponent, StudentsComponent} from './pages/users/pages/students/students.component';
 import { MentorsComponent } from './pages/users/pages/mentors/mentors.component';
+import { NoMentorsComponent } from './pages/users/pages/no-mentors/no-mentors.component';
+import { RequestComponent } from './pages/users/pages/request/request.component';
+import {UserService} from './pages/users/pages/students/user.service';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, QuizComponent, UsersComponent, CoursesComponent, HotDealsComponent, ReportsComponent, BoardComponent, QuizRecomendationComponent, QuizQuestionComponent, StudentsComponent, MentorsComponent],
+  declarations: [
+    DashboardComponent,
+    QuizComponent,
+    UsersComponent,
+    CoursesComponent,
+    HotDealsComponent,
+    ReportsComponent,
+    BoardComponent,
+    QuizRecomendationComponent,
+    QuizQuestionComponent,
+    StudentsComponent,
+    MentorsComponent,
+    DialogOverviewExampleDialogComponent,
+    NoMentorsComponent,
+    RequestComponent
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -27,7 +45,8 @@ import { MentorsComponent } from './pages/users/pages/mentors/mentors.component'
     HttpClientModule,
     ReactiveFormsModule,
   ],
+  providers: [UserService],
   bootstrap: [DashboardComponent],
-  entryComponents: [DashboardComponent]
+  entryComponents: [DashboardComponent, DialogOverviewExampleDialogComponent]
 })
 export class DashboardModule { }

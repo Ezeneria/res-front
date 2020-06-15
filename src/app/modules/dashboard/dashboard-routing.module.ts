@@ -11,6 +11,8 @@ import {QuizRecomendationComponent} from './pages/quiz/components/pages/quiz-rec
 import {QuizQuestionComponent} from './pages/quiz/components/pages/quiz-question/quiz-question.component';
 import {MentorsComponent} from './pages/users/pages/mentors/mentors.component';
 import {StudentsComponent} from './pages/users/pages/students/students.component';
+import {NoMentorsComponent} from './pages/users/pages/no-mentors/no-mentors.component';
+import {RequestComponent} from './pages/users/pages/request/request.component';
 
 const routes: Routes = [
   {
@@ -27,16 +29,27 @@ const routes: Routes = [
         path: 'users',
         children: [
           {
-            path: '', redirectTo: 'students',
-          },
-          {
             component: MentorsComponent,
             path: 'mentors'
           },
           {
             component: StudentsComponent,
             path: 'students'
-          }
+          },
+          {
+            component: NoMentorsComponent,
+            path: 'no-mentors'
+          },
+          {
+            component: RequestComponent,
+            path: 'request'
+          },
+          {
+            path: '', redirectTo: 'students',
+          },
+          {
+            path: '**', redirectTo: 'students', pathMatch: 'full',
+          },
         ]
       },
       {

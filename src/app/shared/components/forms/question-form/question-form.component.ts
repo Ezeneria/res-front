@@ -1,20 +1,24 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from '../../../../core/models/models';
-import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+import {MyErrorStateMatcher} from '../../../../core/helpers/customErrorInput';
 
 @Component({
   selector: 'app-question-form',
   templateUrl: './question-form.component.html',
   styleUrls: ['./question-form.component.scss']
 })
+
 export class QuestionFormComponent implements OnInit {
   @Input() public formData: { questions: Question, variants: {[key: number]: string}[], i: number} = null;
   @Output() public deleted: EventEmitter<number> = new EventEmitter<number>();
   public form: FormGroup;
   public question: Question;
   public variants: [] = [];
-
+  public matcher;
   constructor(private fb: FormBuilder) {
+    this.matcher = new MyErrorStateMatcher();
   }
 
   ngOnInit(): void {
@@ -33,7 +37,7 @@ export class QuestionFormComponent implements OnInit {
 
   createItem(): FormGroup {
     return this.fb.group({
-      title: [''],
+      title: ['', Validators.required],
       selected: [null]
     });
   }

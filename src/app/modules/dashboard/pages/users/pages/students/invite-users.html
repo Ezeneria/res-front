@@ -1,0 +1,90 @@
+<div class="dialog-invite">
+  <h1 mat-dialog-title class="title">Invite students</h1>
+  <div mat-dialog-content>
+    <form class="form" [formGroup]="form">
+      <div class="form-group" *ngFor="let control of formFieldControl; let i = index">
+          <mat-form-field class="form-control">
+            <mat-label>Email</mat-label>
+            <input [errorStateMatcher]="matcher"
+                   [formControl]="formFieldControl[i]?.controls?.email"
+                   matInput
+            >
+            <mat-error
+            *ngIf="formFieldControl[i]?.controls?.email.touched
+              && formFieldControl[i]?.controls?.email.hasError('required')">
+            Email is required
+            </mat-error>
+            <mat-error
+              *ngIf="formFieldControl[i]?.controls?.email.touched
+              && formFieldControl[i]?.controls?.email.hasError('email')">
+              Please enter valid email
+            </mat-error>
+          </mat-form-field>
+        <mat-form-field class="form-control">
+          <mat-label>First Name</mat-label>
+          <input  [errorStateMatcher]="matcher"
+                  [formControl]="formFieldControl[i]?.controls?.firstName"
+                  matInput>
+          <mat-error
+            *ngIf="formFieldControl[i]?.controls?.firstName.touched
+              && formFieldControl[i]?.controls?.firstName.hasError('required')">
+            First name is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-control">
+          <mat-label>Last Name</mat-label>
+          <input [errorStateMatcher]="matcher"
+                 [formControl]="formFieldControl[i]?.controls?.lastName"
+                 matInput>
+          <mat-error
+            *ngIf="formFieldControl[i]?.controls?.lastName.touched
+              && formFieldControl[i]?.controls?.lastName.hasError('required')">
+            Last name is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-control">
+          <mat-label>Mentors:</mat-label>
+          <mat-select [formControl]="formFieldControl[i]?.controls?.mentor">
+            <mat-option
+              *ngFor="let mentor of data.mentors"
+              [value]="mentor.id">
+              {{mentor.firstName}} {{mentor.lastName}}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="formFieldControl[i]?.controls?.mentor.touched
+              && formFieldControl[i]?.controls?.mentor.hasError('required')">
+            Mentor is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-button color="accent" class="add-btn" (click)="addInviteUser()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+        <span>Add users</span>
+      </button>
+    </form>
+  </div>
+  <div mat-dialog-actions class="buttons">
+    <button mat-button (click)="close()">Cancel</button>
+    <button mat-button (click)="submit($event)">Send</button>
+  </div>
+</div>
+<!--<div *ngFor="let item of questions; let i = index">-->
+<!--  <div class="form-group">-->
+<!--    <div class="form-control">-->
+<!--      <mat-form-field class="example-full-width">-->
+<!--        <input matInput [formControl]="questions[i].controls.title">-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="form-control">-->
+<!--      <mat-form-field>-->
+<!--        <mat-label>Favorite food</mat-label>-->
+<!--        <mat-select>-->
+<!--          <mat-option *ngFor="let v of variants">-->
+<!--            {{v}}-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

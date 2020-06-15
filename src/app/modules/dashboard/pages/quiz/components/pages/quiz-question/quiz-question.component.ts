@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm} from '@angular/forms';
 import {Question} from '../../../../../../../core/models/models';
 
 @Component({
@@ -29,7 +29,7 @@ export class QuizQuestionComponent implements OnInit {
   }
 
   trackByFn(index, item) {
-    return index; // or item.id
+    return index;
   }
 
   addQuestion() {

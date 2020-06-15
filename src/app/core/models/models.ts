@@ -15,6 +15,23 @@ export interface User {
     }
   };
 }
+export interface UserList {
+  position?: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  fullName?: string;
+  mentorID: number;
+  status?: boolean;
+}
+
+export interface Mentor {
+  firstName: string;
+  lastName: string;
+  id: number;
+  fullName?: string;
+}
+
 export interface Question {
   id?: number;
   description: string;

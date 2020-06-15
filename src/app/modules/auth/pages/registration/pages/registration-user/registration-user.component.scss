@@ -1,0 +1,23 @@
+.registration-user-page{
+  padding: 80px 0;
+  .header {
+    h1 {
+      margin-bottom: 24px;
+    }
+    text-align: center;
+  }
+  .registration-form {
+    max-width: 300px;
+    margin: 0 auto;
+    .form-control {
+      display: block;
+      .avatar {
+        display: flex;
+        justify-content: center
+      }
+    }
+  }
+  .success {
+    text-align: center;
+  }
+}

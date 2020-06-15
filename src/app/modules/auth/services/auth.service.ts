@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {map} from 'rxjs/operators';
-import {User} from '../../core/models/models';
+import {User} from '../../../core/models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +15,14 @@ export class AuthService {
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
+
   constructor(private http: HttpClient, private router: Router) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
   auth(body): Observable<User> {
-    return this.http.post<User>('http://dev.investment.meotyda.com/auth/login/', body).pipe(map((user: User) => {
+    return this.http.post<User>('https://dev-api.investment.meotyda.com/auth/login/', body).pipe(map((user: User) => {
       if (user && user.token) {
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);

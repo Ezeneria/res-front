@@ -6,26 +6,31 @@ import {MaterialComponentsModule} from './material-modules.module';
 import {InputComponent} from './components/UI/input/input.component';
 import {QuestionFormComponent} from './components/forms/question-form/question-form.component';
 import {RecommendationFormComponent} from './components/forms/recommendation-form/recommendation-form.component';
+import {InputFileComponent} from './components/UI/input-file/input-file.component';
 
-
+const modules = [
+  CommonModule,
+  MaterialComponentsModule,
+  FormsModule,
+  ReactiveFormsModule,
+]
+const components = [
+  ButtonComponent,
+  InputComponent,
+  QuestionFormComponent,
+  RecommendationFormComponent,
+  InputFileComponent
+]
 @NgModule({
   declarations: [
-    ButtonComponent,
-    InputComponent,
-    QuestionFormComponent,
-    RecommendationFormComponent
+    components,
   ],
   imports: [
-    CommonModule,
-    MaterialComponentsModule,
-    FormsModule,
-    ReactiveFormsModule,
+    modules,
   ],
   exports: [
-    MaterialComponentsModule,
-    InputComponent,
-    QuestionFormComponent,
-    RecommendationFormComponent,
+    ...modules,
+    ...components,
   ]
 })
 export class SharedModule { }

@@ -5,5 +5,39 @@
   &-header {
     display: flex;
     justify-content: space-between;
+    .add-btn {
+      margin: 68px 0 12px;
+    }
+    .search-filter {
+      display: flex;
+      .form-control {
+        max-width: 120px;
+        margin-right: 16px;
+        &:last-child {
+          margin-right: 0;
+          margin-left: 16px;
+        }
+      }
+    }
   }
 }
+.dialog-invite {
+  .title {
+    text-align: center;
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+  }
+  .form-group {
+    display: flex;
+    justify-content: center;
+    .form-control {
+      margin-right: 8px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+

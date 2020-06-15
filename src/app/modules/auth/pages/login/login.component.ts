@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
-import {AuthService} from '../../auth.service';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,30 +14,29 @@ export class LoginComponent implements OnInit{
 
   constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {
     this.formLogin = this.fb.group({
-      login: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
   }
 
   submit(e) {
-    e.preventDefault();
     if (this.formLogin.valid) {
       this.router.navigate(['dashboard']);
     }
-    this.auth.auth({email: 'admin@localhost.localdomain', password: 'admin'}).subscribe(val => {
-      console.log('val');
+    // {email: 'admin@localhost.localdomain', password: 'admin'}
+    this.auth.auth(this.formLogin.value).subscribe(val => {
+      console.log(val);
     });
   }
+
   ngOnInit(): void {
     console.log(this.formLogin);
   }
 
-  get login() {
-    return this.formLogin.get('login');
+  get email() {
+    return this.formLogin.get('email');
   }
-  get log() {
-    return this.formLogin.get('log');
-  }
+
   get password() {
     return this.formLogin.get('password');
   }

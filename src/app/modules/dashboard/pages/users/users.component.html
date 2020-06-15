@@ -1,3 +1,16 @@
 <div class="users-page">
-<router-outlet></router-outlet>
+  <div class="tabs">
+    <nav mat-tab-nav-bar class="tab-bar">
+      <a mat-tab-link
+         *ngFor="let link of navLinks"
+         [routerLink]="link.location"
+         routerLinkActive #rla="routerLinkActive"
+         [active]="rla.isActive">
+        {{link.label}}
+      </a>
+    </nav>
+  </div>
+  <div class="router-outlet">
+    <router-outlet></router-outlet>
+  </div>
 </div>

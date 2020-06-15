@@ -1,0 +1,83 @@
+<div class="registration-user-page">
+  <ng-container *ngIf="!isSuccess">
+    <div class="header">
+      <h1>Sign up as a Student</h1>
+      <a routerLink="/registration/mentor"> Sign upt as a mentor</a>
+    </div>
+    <form [formGroup]="form" novalidate (ngSubmit)="submit($event)" class="registration-form">
+      <mat-form-field class="form-control">
+        <mat-label>Emai</mat-label>
+        <input matInput placeholder="Ex. Pizza" formControlName="email">
+      </mat-form-field>
+      <mat-form-field class="form-control">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="Ex. Pizza" formControlName="first_name">
+      </mat-form-field>
+      <mat-form-field class="form-control">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Ex. Pizza" formControlName="last_name">
+      </mat-form-field>
+      <mat-form-field class="form-control">
+        <mat-label>Select state</mat-label>
+        <mat-select formControlName="state">
+          <mat-option *ngFor="let state of states " [value]="state.value">
+            {{state.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-control">
+        <mat-label>Region</mat-label>
+        <input matInput placeholder="Region" formControlName="region">
+      </mat-form-field>
+      <mat-form-field class="form-control">
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="Address" formControlName="address">
+      </mat-form-field>
+      <mat-form-field class="form-control">
+        <mat-label>Snn</mat-label>
+        <input matInput placeholder="Snn" formControlName="snn">
+      </mat-form-field>
+      <mat-form-field class="form-control">
+        <mat-label>Phone</mat-label>
+        <input matInput placeholder="phone" formControlName="phone">
+      </mat-form-field>
+      <div class="form-control">
+        <div class="placeholder">Avatar:</div>
+        <app-input-file class="avatar" *ngIf="!image?.src">
+          <input type="file"
+                 class="upload_btn"
+                 (change)="onFileChange($event)"
+          />
+        </app-input-file>
+      </div>
+      <div #preview class="preview"></div>
+
+      <mat-form-field class="form-control">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="password" formControlName="password1">
+        <mat-error *ngIf="password1.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-control">
+        <mat-label>Confirm password</mat-label>
+        <input matInput placeholder="phone" formControlName="password2">
+        <mat-error *ngIf="password2.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <button mat-button>Save</button>
+    </form>
+  </ng-container>
+  <ng-container *ngIf="isSuccess">
+    <div class="success">
+      <p>
+        Congratulations, your registration was successful!
+        To complete the registration you need to confirm your identity.
+        A confirmation link has been sent to your email
+      </p>
+      <a mat-button color="accent" routerLink="/login">Login</a>
+    </div>
+  </ng-container>
+
+</div>

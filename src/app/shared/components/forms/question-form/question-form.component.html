@@ -22,7 +22,7 @@
             <div class="form-group">
               <div class="form-control">
                 <mat-form-field class="example-full-width">
-                  <input matInput [formControl]="questions[i].controls.title">
+                  <input matInput [errorStateMatcher]="matcher" [formControl]="questions[i].controls.title">
                 </mat-form-field>
               </div>
               <div class="form-control">

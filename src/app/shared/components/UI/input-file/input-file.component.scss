@@ -1,0 +1,39 @@
+:host {
+::ng-deep {
+  .upload_btn{
+    position:absolute;
+    cursor: pointer;
+    width:200px;
+    height:100px;
+    z-index:10;
+    opacity:0;
+  }
+  .preview {
+    display: flex;
+    justify-content: center;
+  }
+
+}
+}
+.upload {
+  width:200px;
+  height: 100px;
+  align-self: center;
+}
+
+.overlay-layer{
+  width:200px;
+  height: 100px;
+  display: block;
+  position:absolute;
+  z-index:0;
+  font-size:25px;
+  color:#000;
+  text-align:center;
+  line-height:40px;
+  ::ng-deep {
+    .mat-icon {
+      font-size: 48px;
+    }
+  }
+}

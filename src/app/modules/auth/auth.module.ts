@@ -12,8 +12,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-import {AuthService} from './auth.service';
+import {AuthService} from './services/auth.service';
 import {HttpClientModule} from '@angular/common/http';
+import { RegistrationUserComponent } from './pages/registration/pages/registration-user/registration-user.component';
+import { RegistrationMentorComponent } from './pages/registration/pages/registration-mentor/registration-mentor.component';
+import {RegistrationService} from './services/registration.service';
 const MaterialModules = [
   MatButtonModule,
   MatFormFieldModule,
@@ -22,7 +25,14 @@ const MaterialModules = [
 ];
 
 @NgModule({
-  declarations: [AuthComponent, RegistrationComponent, LoginComponent, StartPageComponent],
+  declarations: [
+    AuthComponent,
+    RegistrationComponent,
+    LoginComponent,
+    StartPageComponent,
+    RegistrationUserComponent,
+    RegistrationMentorComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -32,6 +42,6 @@ const MaterialModules = [
     SharedModule,
     AuthRoutingModule,
   ],
-  providers: [AuthService]
+  providers: [AuthService, RegistrationService]
 })
 export class AuthModule { }
